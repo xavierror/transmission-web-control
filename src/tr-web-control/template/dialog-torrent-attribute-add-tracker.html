@@ -9,6 +9,7 @@
 		<span id="text-nochange" style="display:none;"></span>
 		<a id="torrent-attribute-add-tracker-button-search-best-ip" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" href="javascript:void(0);">Best Trackers</a>
 		<a id="torrent-attribute-add-tracker-button-search-all-ip" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" href="javascript:void(0);">All Trackers</a>
+		<a id="torrent-attribute-add-tracker-button-search-itzmx-ip" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" href="javascript:void(0);">ITZMX Trackers</a>
 		<a id="torrent-attribute-add-tracker-button-ok" class="easyui-linkbutton" data-options="iconCls:'icon-ok',plain:true" href="javascript:void(0);">Ok</a>
 		<a id="torrent-attribute-add-tracker-button-cancel" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',plain:true"
 		   href="javascript:void(0);">Cancel</a>
@@ -76,7 +77,7 @@
 						thisDialog.dialog("close");
 					}
 				});
-			} else {
+			} else {a
 				thisDialog.find("#text-nochange").html(system.lang["public"]["text-nochange"]).fadeInAndOut();
 			}
 
@@ -95,7 +96,14 @@
                 $("#txtTrackers").html(data.replace(/[\r\n]+/g,"\n"));
             });
         });
-        
+
+		thisDialog.find("#torrent-attribute-add-tracker-button-search-itzmx-ip").click(function () {
+			var trackersURL = "http://github.itzmx.com/1265578519/OpenTracker/master/tracker.txt"
+			$.get(trackersURL,function(data){
+				$("#txtTrackers").html(data.replace(/[\r\n]+/g,"\n"));
+			});
+		});
+
 		thisDialog.find("#torrent-attribute-add-tracker-button-cancel").click(function () {
 			thisDialog.dialog("close");
 		});
