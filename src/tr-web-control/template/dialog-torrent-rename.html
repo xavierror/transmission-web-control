@@ -19,11 +19,11 @@
 				</tr>
 			</table>
 		</div>
-	</div>  
+	</div>
 	<div data-options="region:'south',border:false" style="text-align:right;padding:6px;">
 		<span id="text-infos" style="display:none;" system-lang="['public']['text-nochange']"></span>
 		<a id="button-ok" class="easyui-linkbutton" data-options="iconCls:'icon-ok',plain:true" href="javascript:void(0);" system-lang="dialog['public']['button-ok']"></a>
-		<a id="button-cancel" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',plain:true" href="javascript:void(0);" system-lang="dialog['public']['button-cancel']"></a>  
+		<a id="button-cancel" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',plain:true" href="javascript:void(0);" system-lang="dialog['public']['button-cancel']"></a>
 	</div>
 </div>
 <script type="text/javascript">
@@ -31,7 +31,7 @@
 		system.resetLangText(thisDialog);
 
 		var torrent = transmission.torrents.all[thisDialog.data("id")];
-		
+
 		thisDialog.find("#oldname").text(torrent.name);
 		thisDialog.find("#newname").val(torrent.name);
 
@@ -45,10 +45,10 @@
 			// 如果有指定參數時，開始替換
 			if (oldValue&&newValue&&(oldValue!=newValue))
 			{
-				if (confirm(system.lang["public"]["text-confirm"])==false)
-				{
-					return;
-				}
+				// if (confirm(system.lang["public"]["text-confirm"])==false)
+				// {
+				// 	return;
+				// }
 
 				var icon = button.linkbutton("options").iconCls;
 				button.linkbutton({disabled:true,iconCls:"icon-loading"});
@@ -64,9 +64,9 @@
 							thisDialog.find("#text-infos").html(system.lang["error"]["rename-error"]).fadeInAndOut();
 							return;
 						}
-						
+
 						torrent.moreInfosTag = false;
-						system.reloadTorrentBaseInfos(data.arguments.id, ["name"]);						
+						system.reloadTorrentBaseInfos(data.arguments.id, ["name"]);
 						thisDialog.dialog("close");
 					}
 				);
@@ -75,13 +75,13 @@
 			{
 				thisDialog.find("#text-infos").fadeInAndOut();
 			}
-			
+
 		});
 
 		thisDialog.find("#button-cancel").click(function()
 		{
 			thisDialog.dialog("close");
 		});
-		
+
 	})($("#dialog-torrent-rename"));
 </script>
